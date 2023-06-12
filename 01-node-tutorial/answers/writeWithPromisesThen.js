@@ -1,33 +1,4 @@
 const { writeFile, readFile } = require("fs").promises;
-
-// async function writer() {
-//   writeFile("./ThenFile.txt", "First line of code!\n", {
-//     encoding: "utf8",
-//     flag: "w",
-//   })
-//     .then(() => {
-//       return writeFile("./ThenFile.txt", "Second line of code!\n", {
-//         encoding: "utf8",
-//         flag: "a",
-//       });
-//     })
-//     .then(() => {
-//       return writeFile("./ThenFile.txt", "Third line of code!", {
-//         encoding: "utf8",
-//         flag: "a",
-//       });
-//     });
-// }
-
-// async function reader() {
-//   try {
-//     const data = await readFile("./ThenFile.txt", "utf8");
-//     console.log(data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
 function writer() {
   return writeFile("./ThenFile.txt", "Hi there!\n", {
     encoding: "utf8",
