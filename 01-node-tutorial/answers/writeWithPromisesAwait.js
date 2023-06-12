@@ -2,53 +2,30 @@ const { writeFile, readFile } = require("fs").promises;
 
 async function writer() {
   try {
-    await writeFile(
-      "./writtenFile.txt",
-      "Hi there!\n",
-      {
-        encoding: "utf8",
-        flag: "w",
-      },
-      () => {
-        try {
-          console.log("Creating ------>  File created");
-        } catch (error) {
-          console.log("Error: " + error);
-        }
-      }
-    );
-    await writeFile(
-      "./writtenFile.txt",
-      "Second line\n",
-      {
-        encoding: "utf8",
-        flag: "a",
-      },
-      () => {
-        try {
-          console.log("Adding sec line ----> Second line added");
-        } catch (error) {
-          console.log("Error: " + error);
-        }
-      }
-    );
-    await writeFile(
-      "./writtenFile.txt",
-      "Line Number 3",
-      {
-        encoding: "utf8",
-        flag: "a",
-      },
-      () => {
-        try {
-          console.log("Adding 3rd line ------> Third line added");
-        } catch (error) {
-          console.log("Error: " + error);
-        }
-      }
-    );
-  } catch (err) {
-    console.log("Error :" + err);
+    await writeFile("./writtenFile.txt", "Hi there!\n", {
+      encoding: "utf8",
+      flag: "w",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  try {
+    await writeFile("./writtenFile.txt", "Second line\n", {
+      encoding: "utf8",
+      flag: "a",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  try {
+    await writeFile("./writtenFile.txt", "Line Number 3", {
+      encoding: "utf8",
+      flag: "a",
+    });
+  } catch (error) {
+    console.log(error);
   }
 }
 
