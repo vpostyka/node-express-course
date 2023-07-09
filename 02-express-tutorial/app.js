@@ -1,12 +1,30 @@
 const express = require("express");
 const app = express();
-const { products } = require("./data");
+const cookieParser = require("cookie-parser");
+const { products, people } = require("./data");
 let PORT = 3000;
 
-// Serve static files from the 'public' directory
-app.use(express.static("./public"));
+const peopleRouter = require("./routes/people");
 
-app.get("/api/v1/products", (req, res) => {
+const logger = (req, res, next) => {
+  console.log(
+    `${req.method} request made to ${
+      req.url
+    } at ${new Date().toLocaleTimeString()}`
+  );
+  next();
+};
+app.use(express.static("./public"));
+app.use(logger);
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(cookieParser());
+// PEOPLE
+
+app.use("/api/v1/people", peopleRouter);
+// PRODUCTS
+
+app.get("/api/v1/products", logger, (req, res) => {
   res.json(products);
 });
 
